@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class SnakeHeadController : MonoBehaviour
 {
-    public int speed;
-    public float rotSpeed;
+    private int speed = 1;
+    private float rotSpeed = 0;
     public int health;
     public GameObject route;
 
@@ -26,13 +26,13 @@ public class SnakeHeadController : MonoBehaviour
     {
         while (true)
         {
-            transform.position = new Vector2(route.transform.localScale.x / 2 * Mathf.Cos(speed * Time.time)
-                                            , route.transform.localScale.y / 2 * Mathf.Sin(speed * Time.time));
+            transform.position = new Vector2(route.transform.localScale.x / 2 * Mathf.Cos(speed * Time.time) + route.transform.position.x
+                                            , route.transform.localScale.y / 2 * Mathf.Sin(speed * Time.time) + route.transform.position.y);
             rotSpeed += speed * Time.deltaTime;
             transform.rotation = Quaternion.Euler(0f, 0f, rotSpeed * Mathf.Rad2Deg);
 
             yield return null;
-            health--;
+            
         }
         yield return null;
     }
