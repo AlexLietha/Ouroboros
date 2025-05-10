@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class SnakeHeadController : MonoBehaviour
 {
-    private int speed = 1;
+    public float speed = 1;
     private float rotSpeed = 0;
     public int health;
     public GameObject route;
