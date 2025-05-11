@@ -5,10 +5,11 @@ using UnityEngine;
 public class placementHitboxDetector : MonoBehaviour
 {
     public MouseVisualsControler mouseVisuals;
+    public int collisionCount;
     // Start is called before the first frame update
     void Start()
     {
-        
+        collisionCount = 0;
     }
 
     // Update is called once per frame
@@ -20,12 +21,15 @@ public class placementHitboxDetector : MonoBehaviour
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("is collided");
+        collisionCount++;
         mouseVisuals.SetCanPlace(false);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        mouseVisuals.SetCanPlace(true);
-
+        collisionCount--;
+        if (collisionCount == 0)
+        {
+            mouseVisuals.SetCanPlace(true);
+        }
     }
 }
