@@ -13,14 +13,17 @@ public class SnakeHeadController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        StartCoroutine(move());
+        //StartCoroutine(move());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = new Vector2(route.transform.localScale.x / 2 * Mathf.Cos(speed * Time.time) + route.transform.position.x
+                                            , route.transform.localScale.y / 2 * Mathf.Sin(speed * Time.time) + route.transform.position.y);
+        rotSpeed += speed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotSpeed * Mathf.Rad2Deg);
     }
     IEnumerator move()
     {
