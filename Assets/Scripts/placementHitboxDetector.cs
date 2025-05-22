@@ -21,15 +21,21 @@ public class placementHitboxDetector : MonoBehaviour
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collisionCount++;
-        mouseVisuals.SetCanPlace(false);
+        if (collision.CompareTag("Tower"))
+        {
+            collisionCount++;
+            mouseVisuals.SetCanPlace(false);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        collisionCount--;
-        if (collisionCount == 0)
+        if (collision.CompareTag("Tower"))
         {
-            mouseVisuals.SetCanPlace(true);
+            collisionCount--;
+            if (collisionCount == 0)
+            {
+                mouseVisuals.SetCanPlace(true);
+            }
         }
     }
 }

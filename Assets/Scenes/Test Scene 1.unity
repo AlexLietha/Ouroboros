@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &17301579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +661,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1174773445}
     - target: {fileID: 7162545135237589911, guid: aa868a4821b8a044d9c4cf1f9ec6b3e3, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1090371813}
+    - target: {fileID: 7162545135237589911, guid: aa868a4821b8a044d9c4cf1f9ec6b3e3, type: 3}
       propertyPath: startingPos
       value: -0.25
       objectReference: {fileID: 0}
@@ -1064,6 +1068,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1174773445}
     - target: {fileID: 8440280093765922745, guid: 688b88398e7dc2f43abd3f4b11c19f17, type: 3}
+      propertyPath: Parent
+      value: 
+      objectReference: {fileID: 1026912555}
+    - target: {fileID: 8440280093765922745, guid: 688b88398e7dc2f43abd3f4b11c19f17, type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440280093765922745, guid: 688b88398e7dc2f43abd3f4b11c19f17, type: 3}
       propertyPath: SnakeHead
       value: 
       objectReference: {fileID: 755360868}
@@ -1084,6 +1096,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688b88398e7dc2f43abd3f4b11c19f17, type: 3}
+--- !u!114 &1090371813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8440280093765922745, guid: 688b88398e7dc2f43abd3f4b11c19f17, type: 3}
+  m_PrefabInstance: {fileID: 1090371812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174deb1d4da5865449b8f2a93d3f549c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1156630691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,17 +1120,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1174773445}
     - target: {fileID: 1716321255306432484, guid: 7137061df72426a4b861337d98f41922, type: 3}
-      propertyPath: speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716321255306432484, guid: 7137061df72426a4b861337d98f41922, type: 3}
-      propertyPath: moving
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716321255306432484, guid: 7137061df72426a4b861337d98f41922, type: 3}
-      propertyPath: startingPos
-      value: 0.1
-      objectReference: {fileID: 0}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1090371813}
     - target: {fileID: 3240529763437697229, guid: 7137061df72426a4b861337d98f41922, type: 3}
       propertyPath: m_Name
       value: SnakeHead
@@ -1557,6 +1572,10 @@ PrefabInstance:
       propertyPath: route
       value: 
       objectReference: {fileID: 1174773445}
+    - target: {fileID: 7162545135237589911, guid: aa868a4821b8a044d9c4cf1f9ec6b3e3, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1090371813}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

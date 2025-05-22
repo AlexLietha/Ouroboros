@@ -4,17 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SnakeHeadController : MonoBehaviour
+public class SnakeMovement : MonoBehaviour
 {
     public float speed = 1;
-    public int health;
     public GameObject route;
     public float currentTrackPosition;
-
     public float startingPos;
-
     public bool moving;
     public float phase;
+
+    public SnakeController controller;
     // Start is called before the first frame update
     void Start() {
         moving = true;
@@ -29,11 +28,11 @@ public class SnakeHeadController : MonoBehaviour
         }
     }
 
+
     private void Move()
     {
         phase += speed * Time.deltaTime;
 
-        // Keep phase within 0 to 2π for cleanliness (optional)
         
 
         transform.position = new Vector2(route.transform.localScale.x / 2 * Mathf.Cos(phase + startingPos) + route.transform.position.x
@@ -64,5 +63,18 @@ public class SnakeHeadController : MonoBehaviour
     {
         return currentTrackPosition;
     }
- 
+
+
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            Debug.Log("Projectile hit");
+            controller.ChangeHealth(collision.GetComponent<Projectile>().damage);
+            Destroy(collision.gameObject);
+        }
+    }
+
 }

@@ -9,7 +9,10 @@ public class SnakeController : MonoBehaviour
     public GameObject PrefabBody;
     public GameObject SnakeTail;
     public GameObject route;
-    public float distBetweenHeadBody;
+    public GameObject Parent;
+    private float distBetweenHeadBody;
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +50,7 @@ public class SnakeController : MonoBehaviour
         {
             Debug.Log("End Game, Bad Ending");
         }
-        else if(SnakeHead.GetComponent<SnakeHeadController>().health <= 0)
+        else if(health <= 0)
         {
             Debug.Log("End Game, Good Ending");
         }
@@ -56,8 +59,18 @@ public class SnakeController : MonoBehaviour
 
     public void SpawnBody()
     {
-       currentSnakeBody = Instantiate(PrefabBody, SnakeHead.transform.position, SnakeHead.transform.rotation);
-       currentSnakeBody.GetComponent<SnakeHeadController>().route = route;
-        currentSnakeBody.GetComponent<SnakeHeadController>().phase = SnakeHead.GetComponent<SnakeHeadController>().currentTrackPosition;
+       currentSnakeBody = Instantiate(PrefabBody, SnakeHead.transform.position, SnakeHead.transform.rotation, Parent.transform);
+        SnakeMovement snakeMovement = currentSnakeBody.GetComponent<SnakeMovement>();
+        snakeMovement.route = route;
+        snakeMovement.phase = SnakeHead.GetComponent<SnakeMovement>().currentTrackPosition;
+        snakeMovement.controller = SnakeHead.GetComponent<SnakeMovement>().controller;
+
     }
+
+    public void ChangeHealth(int damage)
+    {
+        health = health - damage;
+    }
+
+
 }
