@@ -7,10 +7,16 @@ public class TowerController : MonoBehaviour
     public GameObject projectile;
     public float cooldown;
     private bool canThrow;
+    public int cost;
+
+    public GameObject range;
+    public GameObject visibleRange;
+
     // Start is called before the first frame update
     void Start()
     {
         canThrow = true;
+        
     }
 
     // Update is called once per frame
@@ -33,4 +39,12 @@ public class TowerController : MonoBehaviour
         }
         yield return null;
     }
+
+
+    
+    public void ShowRange(bool flag)
+    {
+        visibleRange.SetActive(flag);
+    }
+    
 }

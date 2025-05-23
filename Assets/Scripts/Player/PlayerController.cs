@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour
     public Controls playerControls;
 
     private InputAction cancel;
-    private InputAction interact;
-    private InputAction place;
+    private InputAction click;
 
     public MouseVisualsControler mouseVisual;
+    public CheeseManager cheeseManager;
+
     public Transform towerParent;
 
     // Start is called before the first frame update
@@ -26,14 +27,12 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         cancel = playerControls.UITowers.Cancel;
-        interact = playerControls.UITowers.Interact;
-        place = playerControls.UITowers.Place;
+        click = playerControls.UITowers.Click;
         cancel.Enable();
-        interact.Enable();
-        place.Enable();
+        click.Enable();
 
         cancel.performed += Cancel;
-        place.performed += Place;
+        click.performed += Place;
     }
 
     // Update is called once per frame
@@ -51,10 +50,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Place(InputAction.CallbackContext context)
     {
-        if (mouseVisual.GetVisualTower() != null && mouseVisual.canPlace)
+        
+        if (mouseVisual.GetVisualTower() != null && mouseVisual.canPlace && cheeseManager.enoughCheese(mouseVisual.GetRealTower().GetComponent<TowerController>().cost))
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Instantiate(mouseVisual.GetRealTower(), mousePosition, Quaternion.identity, towerParent);
+            GameObject PlacedTower = Instantiate(mouseVisual.GetRealTower(), mousePosition, Quaternion.identity, towerParent);
+            cheeseManager.LoseCheese(PlacedTower.GetComponent<TowerController>().cost);
+            Cancel(context);
         }
+        
     }
 }

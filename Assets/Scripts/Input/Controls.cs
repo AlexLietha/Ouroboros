@@ -37,18 +37,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Place"",
+                    ""name"": ""Click"",
                     ""type"": ""Button"",
                     ""id"": ""4ccbdcef-7c82-4c90-85d0-8f51b5a82a51"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""16f9be69-11f9-41a6-957e-03cdaf145b4b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -85,7 +76,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Place"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -96,18 +87,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Place"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3a4e680d-9b44-42a4-a544-b03428d44d77"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -125,8 +105,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // UI/Towers
         m_UITowers = asset.FindActionMap("UI/Towers", throwIfNotFound: true);
         m_UITowers_Cancel = m_UITowers.FindAction("Cancel", throwIfNotFound: true);
-        m_UITowers_Place = m_UITowers.FindAction("Place", throwIfNotFound: true);
-        m_UITowers_Interact = m_UITowers.FindAction("Interact", throwIfNotFound: true);
+        m_UITowers_Click = m_UITowers.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -189,15 +168,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UITowers;
     private List<IUITowersActions> m_UITowersActionsCallbackInterfaces = new List<IUITowersActions>();
     private readonly InputAction m_UITowers_Cancel;
-    private readonly InputAction m_UITowers_Place;
-    private readonly InputAction m_UITowers_Interact;
+    private readonly InputAction m_UITowers_Click;
     public struct UITowersActions
     {
         private @Controls m_Wrapper;
         public UITowersActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_UITowers_Cancel;
-        public InputAction @Place => m_Wrapper.m_UITowers_Place;
-        public InputAction @Interact => m_Wrapper.m_UITowers_Interact;
+        public InputAction @Click => m_Wrapper.m_UITowers_Click;
         public InputActionMap Get() { return m_Wrapper.m_UITowers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -210,12 +187,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
-            @Place.started += instance.OnPlace;
-            @Place.performed += instance.OnPlace;
-            @Place.canceled += instance.OnPlace;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
         }
 
         private void UnregisterCallbacks(IUITowersActions instance)
@@ -223,12 +197,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
-            @Place.started -= instance.OnPlace;
-            @Place.performed -= instance.OnPlace;
-            @Place.canceled -= instance.OnPlace;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
         }
 
         public void RemoveCallbacks(IUITowersActions instance)
@@ -258,7 +229,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IUITowersActions
     {
         void OnCancel(InputAction.CallbackContext context);
-        void OnPlace(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }
