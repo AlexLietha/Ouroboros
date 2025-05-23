@@ -12,10 +12,12 @@ public class TowerController : MonoBehaviour
     public GameObject range;
     public GameObject visibleRange;
 
+    public PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
         canThrow = true;
+        visibleRange.SetActive(false);
         
     }
 
@@ -39,6 +41,8 @@ public class TowerController : MonoBehaviour
         }
         yield return null;
     }
+
+
 
 
     

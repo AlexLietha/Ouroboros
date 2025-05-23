@@ -182,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a655a16eb095924eb2d43b9229c7b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 5978018029004528865}
+  Parent: {fileID: 7322721512341062486}
 --- !u!61 &2088705320639368117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -405,3 +407,4 @@ MonoBehaviour:
   cost: 10
   range: {fileID: 6151591636795191555}
   visibleRange: {fileID: 1453341075106879798}
+  playerController: {fileID: 0}
