@@ -13,12 +13,13 @@ public class TowerController : MonoBehaviour
     public GameObject visibleRange;
 
     public PlayerController playerController;
+    public int damageCount;
     // Start is called before the first frame update
     void Start()
     {
         canThrow = true;
         visibleRange.SetActive(false);
-        
+        damageCount = 0;
     }
 
     // Update is called once per frame

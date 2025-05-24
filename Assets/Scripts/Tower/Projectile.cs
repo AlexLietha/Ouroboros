@@ -8,9 +8,11 @@ public class Projectile : MonoBehaviour
     public float speed;
     public Vector2 direction;
     private Rigidbody2D rb;
+    public TowerController Parent;
     // Start is called before the first frame update
     void Start()
     {
+        Parent = GetComponentInParent<TowerController>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = direction * speed;
     }

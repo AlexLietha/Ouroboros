@@ -72,6 +72,7 @@ public class SnakeMovement : MonoBehaviour
         if (collision.CompareTag("Projectile"))
         {
             controller.ChangeHealth(collision.GetComponent<Projectile>().damage);
+            collision.GetComponent<Projectile>().Parent.damageCount += collision.GetComponent<Projectile>().damage;
             Destroy(collision.gameObject);
         }
     }
