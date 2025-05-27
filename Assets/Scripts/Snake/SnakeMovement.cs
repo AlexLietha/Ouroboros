@@ -67,14 +67,6 @@ public class SnakeMovement : MonoBehaviour
 
 
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Projectile"))
-        {
-            controller.ChangeHealth(collision.GetComponent<Projectile>().damage);
-            collision.GetComponent<Projectile>().Parent.damageCount += collision.GetComponent<Projectile>().damage;
-            Destroy(collision.gameObject);
-        }
-    }
+    
 
 }

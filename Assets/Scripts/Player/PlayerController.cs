@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
 
     public MouseVisualsControler mouseVisual;
     public CheeseManager cheeseManager;
-    public Transform towerParent;
+    public SnakeController snakeController;
 
+    public Transform towerParent;
     public GameObject selectedTower;
+
+    public GameObject panelSelect;
+    public GameObject panelUpgrade;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void Cancel(InputAction.CallbackContext context)
     {
+        mouseVisual.GetVisualTower().transform.position = new Vector2 (-100, 100);   
        mouseVisual.SetVisualTower(null);
        mouseVisual.SetRealTower(null);
 
@@ -51,6 +56,10 @@ public class PlayerController : MonoBehaviour
         {
             selectedTower.GetComponent<TowerController>().ShowRange(false);
             selectedTower = null;
+            panelSelect.SetActive(true);
+            panelUpgrade.GetComponent<UpgradePanel>().SetNull();
+            panelUpgrade.SetActive(false);
+
 
         }
         if (mouseVisual.GetVisualTower() != null && mouseVisual.canPlace && cheeseManager.enoughCheese(mouseVisual.GetRealTower().GetComponent<TowerController>().cost))
@@ -58,12 +67,11 @@ public class PlayerController : MonoBehaviour
 
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             GameObject PlacedTower = Instantiate(mouseVisual.GetRealTower(), mousePosition, Quaternion.identity, towerParent);
-            PlacedTower.GetComponent<TowerController>().playerController = this;
+            PlacedTower.GetComponent<TowerController>().playerController = this.gameObject;
             SelectTower(PlacedTower);
             cheeseManager.LoseCheese(PlacedTower.GetComponent<TowerController>().cost);
             Cancel(context);
         }
-        
     }
 
     public void SelectTower(GameObject tower)
@@ -75,5 +83,11 @@ public class PlayerController : MonoBehaviour
         }
         selectedTower = tower;
         tower.GetComponent<TowerController>().ShowRange(true);
+        panelSelect.SetActive(false);
+        panelUpgrade.SetActive(true);
+        panelUpgrade.GetComponent<UpgradePanel>().SetInformation(tower);
+
     }
+
+
 }

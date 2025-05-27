@@ -22,5 +22,14 @@ public class Projectile : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Snake")){
+            Parent.playerController.GetComponent<PlayerController>().snakeController.ChangeHealth(damage);
+            Parent.damageCount = Parent.damageCount + damage;
+            Parent.playerController.GetComponent<PlayerController>().panelUpgrade.GetComponent<UpgradePanel>().UpdateInformation();
+            Destroy(this.gameObject);
+        }
+    }
 
 }

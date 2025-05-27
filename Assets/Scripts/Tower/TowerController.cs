@@ -12,7 +12,7 @@ public class TowerController : MonoBehaviour
     public GameObject range;
     public GameObject visibleRange;
 
-    public PlayerController playerController;
+    public GameObject playerController;
     public int damageCount;
     // Start is called before the first frame update
     void Start()

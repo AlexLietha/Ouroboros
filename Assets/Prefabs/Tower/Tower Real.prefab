@@ -407,4 +407,5 @@ MonoBehaviour:
   cost: 10
   range: {fileID: 6151591636795191555}
   visibleRange: {fileID: 1453341075106879798}
-  playerController: {fileID: 0}
+  playerController: {fileID: 6751091773355085778, guid: 2b6f7cc5c39c91d48bcab292669e401b, type: 3}
+  damageCount: 0

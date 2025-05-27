@@ -21,15 +21,15 @@ public class SelectTower : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
   
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        controller.playerController.GetComponent<PlayerController>().SelectTower(Parent);
 
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        controller.playerController.SelectTower(Parent);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -38,7 +38,7 @@ public class SelectTower : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(controller.playerController.selectedTower != Parent)
+        if(controller.playerController.GetComponent<PlayerController>().selectedTower != Parent)
         {
             controller.ShowRange(false);
         }
