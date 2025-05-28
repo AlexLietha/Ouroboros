@@ -409,3 +409,6 @@ MonoBehaviour:
   visibleRange: {fileID: 1453341075106879798}
   playerController: {fileID: 6751091773355085778, guid: 2b6f7cc5c39c91d48bcab292669e401b, type: 3}
   damageCount: 0
+  Canvas: {fileID: 5055806908227845807, guid: 88d2a9596f118734586b9f566bb5812a, type: 3}
+  upgrades: 000000000000000000000000
+  upgradeLimit: 2

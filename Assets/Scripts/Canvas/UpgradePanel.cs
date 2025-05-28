@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradePanel : MonoBehaviour
 {
     public TMP_Text damageDisplay;
     public GameObject SelectedTower;
+   
+
+    public GameObject[] upgradeButtons;
+ 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +39,39 @@ public class UpgradePanel : MonoBehaviour
     }
     public void UpdateInformation()
     {
-        if (SelectedTower != null)
+        if (SelectedTower == null)
         {
-            damageDisplay.text = "Damage: " + SelectedTower.GetComponent<TowerController>().damageCount;
+            return;
         }
+
+        
+        UpdateButtons();
+        damageDisplay.text = "Damage: " + SelectedTower.GetComponent<TowerController>().damageCount;
+    }
+
+    public void UpdateButtons()
+    {
+        for (int i = 0; i < upgradeButtons.Length; i++)
+        {
+            if (SelectedTower.GetComponent<TowerController>().upgrades[i] == SelectedTower.GetComponent<TowerController>().upgradeLimit)
+            {
+                upgradeButtons[i].GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                upgradeButtons[i].GetComponent<Image>().color = upgradeButtons[i].GetComponent<OnClickUpgradeButton>().originalColor;
+            }
+        }
+    }
+
+    public bool isUpgrading()
+    {
+        for (int i = 0; i < upgradeButtons.Length; i++) {
+            if (upgradeButtons[i].GetComponent<OnClickUpgradeButton>().isHovered)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

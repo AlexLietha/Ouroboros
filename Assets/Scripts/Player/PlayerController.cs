@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Click(InputAction.CallbackContext context)
     {
-        if ((selectedTower != null))
+        if ((selectedTower != null) && !panelUpgrade.GetComponent<UpgradePanel>().isUpgrading())
         {
             selectedTower.GetComponent<TowerController>().ShowRange(false);
             selectedTower = null;
