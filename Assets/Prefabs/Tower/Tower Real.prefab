@@ -411,4 +411,8 @@ MonoBehaviour:
   damageCount: 0
   Canvas: {fileID: 5055806908227845807, guid: 88d2a9596f118734586b9f566bb5812a, type: 3}
   upgrades: 000000000000000000000000
-  upgradeLimit: 2
+  upgradeLimit: 3
+  upgradeSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -29,6 +29,7 @@ public class UpgradePanel : MonoBehaviour
     public void SetNull()
     {
         SelectedTower = null;
+        
         UpdateInformation();
     }
 
@@ -53,14 +54,17 @@ public class UpgradePanel : MonoBehaviour
     {
         for (int i = 0; i < upgradeButtons.Length; i++)
         {
-            if (SelectedTower.GetComponent<TowerController>().upgrades[i] == SelectedTower.GetComponent<TowerController>().upgradeLimit)
-            {
-                upgradeButtons[i].GetComponent<Image>().color = Color.white;
-            }
-            else
-            {
-                upgradeButtons[i].GetComponent<Image>().color = upgradeButtons[i].GetComponent<OnClickUpgradeButton>().originalColor;
-            }
+            upgradeButtons[i].GetComponent<OnClickUpgradeButton>().animatorController.SetInteger("idTower", SelectedTower.GetComponent<TowerController>().id);  
+            upgradeButtons[i].GetComponent<OnClickUpgradeButton>().animatorController.SetInteger(upgradeButtons[i].GetComponent<OnClickUpgradeButton>().parameterName, SelectedTower.GetComponent<TowerController>().upgrades[i]);
+
+            //if (SelectedTower.GetComponent<TowerController>().upgrades[i] == SelectedTower.GetComponent<TowerController>().upgradeLimit)
+            //{
+            //    upgradeButtons[i].GetComponent<Image>().color = Color.white;
+            //}
+            //else
+            //{
+            //    upgradeButtons[i].GetComponent<Image>().color = upgradeButtons[i].GetComponent<OnClickUpgradeButton>().originalColor;
+            //}
         }
     }
 

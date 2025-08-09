@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerController : MonoBehaviour
 {
+    //tower id
+    public readonly int id = 0;
+
     public GameObject projectile;
     public float cooldown;
     private bool canThrow;

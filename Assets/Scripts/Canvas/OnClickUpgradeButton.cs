@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class OnClickUpgradeButton : MonoBehaviour, IPointerDownHandler, IPointer
     public int upgradePath;
     public bool isHovered;
     public Color originalColor;
+    public string parameterName;
+
+    public Animator animatorController;
     // Start is called before the first frame update
     void Start()
     {
